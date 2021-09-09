@@ -1,6 +1,7 @@
 // 用户登录
 exports.login = async(req, res, next) => {
     try {
+        JSON.parse('abc')
         res.send('post /users/login')
     } catch (err) {
         next(err)
