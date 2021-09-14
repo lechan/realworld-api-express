@@ -35,14 +35,18 @@ exports.register = async(req, res, next) => {
     }
 }
 
+// 获取当前登录用户
 exports.getCurrentUser = async(req, res, next) => {
     try {
-        res.send('get /user')
+        res.status(200).json({
+            user: req.user
+        })
     } catch (err) {
         next(err)
     }
 }
 
+// 更新当前登录用户
 exports.updateCurrentUser = async(req, res, next) => {
     try {
         res.send('put /user')
