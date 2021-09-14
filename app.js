@@ -4,6 +4,7 @@ const cors = require('cors')
 const router = require('./router')
 const { request } = require('express')
 const errorHandler = require('./middleware/error-handler')
+require('./model')
 
 const app = express()
 
