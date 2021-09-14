@@ -1,5 +1,6 @@
 const express = require('express')
 const { login, register, getCurrentUser, updateCurrentUser } = require('../controller/user')
+const userValidator = require('../validator/user')
 
 const router = express.Router()
 
@@ -7,7 +8,7 @@ const router = express.Router()
 router.post('/users/login', login)
 
 // 用户注册
-router.post('/users', register)
+router.post('/users', userValidator.register, register)
 
 // 获取当前登录用户
 router.get('/user', getCurrentUser)
