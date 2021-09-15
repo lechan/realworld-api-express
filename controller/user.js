@@ -9,7 +9,9 @@ exports.login = async(req, res, next) => {
         // 生成token
         const token = await jwt.sign({
             userId: user._id
-        }, jwtSecret)
+        }, jwtSecret, {
+            expiresIn: 60 * 60 * 24
+        })
         delete user.password
         res.status(200).json({
             ...user,
@@ -49,7 +51,15 @@ exports.getCurrentUser = async(req, res, next) => {
 // 更新当前登录用户
 exports.updateCurrentUser = async(req, res, next) => {
     try {
-        res.send('put /user')
+        const updateUserInfo = {
+            ...req.user.toJSON(),
+            ...req.body.user,
+            updatedAt: Date.now()
+        }
+        await User.findByIdAndUpdate(updateUserInfo._id, updateUserInfo)
+        res.status(201).json({
+            user: updateUserInfo
+        })
     } catch (err) {
         next(err)
     }
