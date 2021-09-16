@@ -1,10 +1,12 @@
+const moment = require('moment-timezone')
+
 module.exports = {
     createdAt: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: moment().tz("Asia/Shanghai").format('YYYY-MM-DD hh:mm:ss')
     },
     updatedAt: {
-        type: Date,
-        default: Date.now
+        type: String,
+        default: moment().tz("Asia/Shanghai").format('YYYY-MM-DD hh:mm:ss')
     }
 }

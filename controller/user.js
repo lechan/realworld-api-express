@@ -1,6 +1,7 @@
 const { User } = require('../model')
 const jwt = require('../util/jwt')
 const { jwtSecret } = require('../config/config.default')
+const moment = require('moment-timezone')
 
 // 用户登录
 exports.login = async(req, res, next) => {
@@ -54,7 +55,7 @@ exports.updateCurrentUser = async(req, res, next) => {
         const updateUserInfo = {
             ...req.user.toJSON(),
             ...req.body.user,
-            updatedAt: Date.now()
+            updatedAt: moment().tz("Asia/Shanghai").format('YYYY-MM-DD hh:mm:ss')
         }
         await User.findByIdAndUpdate(updateUserInfo._id, updateUserInfo)
         res.status(201).json({
