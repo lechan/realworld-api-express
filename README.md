@@ -2,6 +2,11 @@
 
 > 学习 express， 完成用户注册、登录，用户、文章增删改查，数据库使用 MongoDB
 
+## 工具准备
+- MongoDB （默认端口 27017）
+- Navicat（操作数据库）
+- Postman （导入接口文档 RealWorld-API.postman_collection.json）
+
 ## 运行
 - npm install
 - npm start
