@@ -8,10 +8,10 @@ const router = express.Router()
 
 // 用户相关路由
 router.use(user)
-router.use(profile)
+router.use('/profiles', profile)
 // 文章相关路由
-router.use(article)
+router.use('/articles', article)
 // 标签相关路由
-router.use(tag)
+router.use('/tags', tag)
 
 module.exports = router
