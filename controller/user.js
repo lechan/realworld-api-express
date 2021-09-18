@@ -55,7 +55,7 @@ exports.updateCurrentUser = async(req, res, next) => {
         const updateUserInfo = {
             ...req.user.toJSON(),
             ...req.body.user,
-            updatedAt: moment().tz("Asia/Shanghai").format('YYYY-MM-DD hh:mm:ss')
+            updatedAt: moment().tz("Asia/Shanghai").format('YYYY-MM-DD HH:mm:ss')
         }
         await User.findByIdAndUpdate(updateUserInfo._id, updateUserInfo)
         res.status(201).json({

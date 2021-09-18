@@ -4,7 +4,7 @@ const { Article, User } = require('../model')
 exports.getArticles = async (req, res, next) => {
     try {
         const {
-            limit = 20,
+            limit = 10,
             offset = 0,
             tag,
             author
@@ -32,7 +32,7 @@ exports.getArticles = async (req, res, next) => {
                 createdAt: -1
             })
 
-        const articlesCount = await Article.countDocuments()
+        const articlesCount = await Article.find(filter).countDocuments()
 
         res.status(200).json({
             artilces,
@@ -74,7 +74,7 @@ exports.createArticle = async (req, res, next) => {
         // 处理请求
         const article = new Article(req.body.article)
         article.author = req.user._id
-        article.populate('author').execPopulate()
+        article.populate('author')
         await article.save()
         res.status(201).json({
             article
