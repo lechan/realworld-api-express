@@ -1,4 +1,4 @@
-# 基于 realworld api 的 express 接口方案
+# 基于 RealWorld API 和 Express 的 RESTful 接口方案
 
 > 学习 express， 完成用户注册、登录，用户、文章增删改查，数据库使用 MongoDB
 
